@@ -1,0 +1,11 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    background-color: #4a4b67;
+    color: #00aace;
+    font-family: 'Anaheim', sans-serif;
+    font-weight: 600;
+    font-size: 200px;
+    text-align: center;
+}
