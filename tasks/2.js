@@ -1,62 +1,49 @@
-// a Function that returns the name of the brand that has the cheapest average price. (Note: The brand name should be in quotes "")
-// const val = [14, 58, 20, 77, 66, 82, 42, 67, 42, 4]
-function lowestAv(val) {
-    const min = Math.min(...val)
-    return min;
-  }
-  //calculate avarage num inside the array
-  function calcAvarage(beerArr) {
-    let sum = beerArr.reduce((acc, next) => {
-      let sumOfArrayEls = acc + next;
-      return sumOfArrayEls;
-    })
-    let avg = (sum) / beerArr.length;
-    return avg;
-  }
-  
-  fetch('https://challenge.codingsans.com/beers.json')
+//list of the beers filtered by beer types. 
+//the Function should take a BeerType and return all the beer IDs in an array of that type.
+//Filter for the `Wheat` type! (Note: the input may change when you reload the page!)
+
+//filterTypes(Wheat) --> ['beerid1','beerid2']
+fetch('https://challenge.codingsans.com/beers.json')
     .then((response) => {
-      return response.json();
+        return response.json();
     })
     .then(data => {
-      let brands = data;
-      let brandArray = []
-      brands.forEach(function (brand) {
-        brandArray.push({ 'brandName': brand.brand, 'beers': brand.id, 'price': brand.price })
-      })
-      return brandArray;
+        let brands = data;
+        let brandArray = []
+        brands.forEach(function (brand) {
+            brandArray.push({ 'brandBeers': brand.name, 'id': brand.id, 'type': brand.type })
+        })
+        return brandArray;
     })
     .then((brandi) => {
-      let combineCategories = function (data) {
-        let grouped = {}
-        let theCheapestBrand;
-        brandi.forEach(function (item, index) {
-          if (!grouped[item.brandName]) {
-            grouped[item.brandName] = [];
-            let beerPrices = grouped[item.brandName].push(Number(item.price));
-          }
-          else {
-            let beerPrices = grouped[item.brandName].push(Number(item.price));
-          }
-        });
-        let brandAndPrices = Object.keys(grouped).map(function (el) {
-          return { brand: el, beers: calcAvarage(grouped[el]) }
-        });
-        let onlyBeers = [];
-        brandAndPrices.forEach((el) => {
-          onlyBeers.push(el.beers)
-        });
-        let theLowest =lowestAv(onlyBeers)
-          brandAndPrices.forEach((el)=>{
-          if(el.beers==theLowest){
-            theCheapestBrand = el.brand
-          }
+        let filteredByTypes = {}
+        brandi.forEach((el) => {
+            if (!filteredByTypes[el.type]) {
+                filteredByTypes[el.type] = [];
+                filteredByTypes[el.type].push(el.id);
+            } else {
+                filteredByTypes[el.type].push(el.id);
+            }
         })
-        return theCheapestBrand
-      }
-      return JSON.stringify(combineCategories(brandi),null, 2)
+        let idAndTypes = () => {
+            return Object.keys(filteredByTypes).map((el) => {
+                return { type: el, ids: filteredByTypes[el] }
+            })
+        }
+        return idAndTypes()
+    })
+    .then((idAndTypes) => {
+        let result;
+        function filterTypes(type) {
+            idAndTypes.forEach((dat) => {
+                if (dat.type === type) {
+                    result = dat.ids;
+                }
+            })
+            return result;
+        }
+        return JSON.stringify(filterTypes('Wheat'), null, 2);
     })
     .catch((err) => {
-      console.log('rejected', err);
+        console.log('rejected', err);
     });
-  
