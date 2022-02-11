@@ -23,14 +23,12 @@ fetch('https://challenge.codingsans.com/beers.json')
       else {
         grouped[item.brandName].push(item.beers);
       }
-
-    
     });
      return Object.keys(grouped).map(function (el) {
         return { brand: el, beers: grouped[el] };
       });
     }
-    return JSON.stringify(combineCategories(brandi),null, 2)
+    console.log(JSON.stringify(combineCategories(brandi),null, 2))
   })
   .catch((err) => {
     console.log('rejected', err);

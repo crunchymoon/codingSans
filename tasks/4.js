@@ -28,5 +28,5 @@ fetch('https://challenge.codingsans.com/beers.json')
             return itemIds
 
         }
-        return JSON.stringify(leaveIngredient('barley'), null, 2)
+        console.log(JSON.stringify(leaveIngredient('barley'), null, 2))
     })
