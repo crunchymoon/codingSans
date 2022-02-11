@@ -1,0 +1,47 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+}
+body {
+    background-color: #75bb3b;
+}
+.container {
+    padding: 2em 5em;
+    position: relative;
+    text-align: right;
+    margin: 3em 3em 0 3em;
+    height: 65vh;
+    background-color: white;
+}
+.coding__h {
+    font-size: 10em;
+    color: #75bb3b;
+    line-height: 1;
+}
+.coding__img {
+    transform: rotateZ(-20deg);
+    width: 15%;
+    left: 56%;
+    position: absolute;
+    top: 15%;
+    right: 0;
+}
+.main {
+    margin: 0 3em 3em 3em;
+}
+.attention {
+    display: flex;
+    background-color: #FFAD09;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em 2em;
+    color: white;
+}
+.attention_03 {
+    font-size: 1.5em;
+    margin-right: .3em;
+}
+.attention__value{
+    font-size: 1.2em;
+}
