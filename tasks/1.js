@@ -1,5 +1,7 @@
 //1)
-//Sort brands + its all beers that belong them
+//All files include a solution function. Run that and you'll get my solution. When the task require you can also pass arguments to the solution function. 
+//Please change the index.html file's script tag accordinlgy to the tasks.
+let task1 = document.querySelector('.task1__solution')
 fetch('https://challenge.codingsans.com/beers.json')
   .then((response) => {
     return response.json();
@@ -13,22 +15,25 @@ fetch('https://challenge.codingsans.com/beers.json')
     return brandArray;
   })
   .then((brandi) => {
-     let combineCategories = function (data) {
-    grouped = {}
-
-    brandi.forEach(function (item, index) {
-
-      if (!grouped[item.brandName]) {grouped[item.brandName] = [];
-      grouped[item.brandName].push(item.beers);}
-      else {
-        grouped[item.brandName].push(item.beers);
+    function solution() {
+      let combineCategories = function () {
+        grouped = {}
+        brandi.forEach(function (item, index) {
+          if (!grouped[item.brandName]) {
+            grouped[item.brandName] = [];
+            grouped[item.brandName].push(item.beers);
+          }
+          else {
+            grouped[item.brandName].push(item.beers);
+          }
+        });
+        return Object.keys(grouped).map(function (el) {
+          return { brand: el, beers: grouped[el] };
+        });
       }
-    });
-     return Object.keys(grouped).map(function (el) {
-        return { brand: el, beers: grouped[el] };
-      });
+      return JSON.stringify(combineCategories(), null, 2)
     }
-    console.log(JSON.stringify(combineCategories(brandi),null, 2))
+    task1.innerHTML=solution();
   })
   .catch((err) => {
     console.log('rejected', err);

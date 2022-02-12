@@ -7,28 +7,35 @@ body {
     background-color: #75bb3b;
 }
 .container {
-    padding: 2em 5em;
-    position: relative;
+    padding: 2em 9em;
     text-align: right;
-    margin: 3em 3em 0 3em;
+    margin: 3em 5em 0 5em;
     height: 65vh;
     background-color: white;
 }
+.coding {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
 .coding__h {
-    font-size: 10em;
+    font-size: 15vw;
     color: #75bb3b;
     line-height: 1;
+    position: absolute;
+    flex: 1;
+    right: 0;
+    top: 0;
 }
 .coding__img {
     transform: rotateZ(-20deg);
-    width: 15%;
-    left: 56%;
+    width: 11vw;
     position: absolute;
-    top: 15%;
-    right: 0;
+    top: 0;
+    right: 14vw;
 }
 .main {
-    margin: 0 3em 3em 3em;
+    margin: 0 5em 5em 5em;
 }
 .attention {
     display: flex;
@@ -44,4 +51,45 @@ body {
 }
 .attention__value{
     font-size: 1.2em;
+}
+.tasksContainer {
+    padding: 2em;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+}
+.task__content {
+  white-space: pre;
+}
+.tasks__left {
+  flex: 1;
+}
+.tasks__right {
+  flex: 1;
+}
+.task__span {
+    font-size: 1.5em;
+    margin-right: .3em;
+}
+.task__line {
+    width: 100%;
+    height: 1px;
+    background-color: black;
+}
+.task__inner {
+    margin-top: 5px;
+    border: 1px solid black;
+    padding: 1em;
+}
+.task__select {
+    width: 100%;
+    text-align: center;
+}
+.task__6 {
+    background-color: white;
+    padding: 2em 2em 3em 2em;
+    text-align: center;
+}
+.task6__solution {
+  text-align: left;
 }

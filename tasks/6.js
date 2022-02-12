@@ -1,3 +1,7 @@
+//6
+//All files include a solution function. Run that and you'll get my solution. When the task require you can also pass arguments to the solution function.
+//Please change the index.html file's script tag accordinlgy to the tasks.
+let task6 = document.querySelector('.task6__solution');
 fetch('https://challenge.codingsans.com/beers.json')
     .then((response) => {
         return response.json();
@@ -12,7 +16,7 @@ fetch('https://challenge.codingsans.com/beers.json')
         return roundUp;
     })
     .then((rounded) => {
-        function groupRounded(data){
+        function solution(){
         let grouped ={}
         rounded.forEach((item,index)=>{
             if (!grouped[item.price]) {grouped[item.price] = [];
@@ -23,5 +27,5 @@ fetch('https://challenge.codingsans.com/beers.json')
         })
         return JSON.stringify(grouped,null,2)
         }
-        console.log(groupRounded(rounded))
+        task6.innerHTML=solution();
     })
